@@ -2,12 +2,13 @@
 import { useContext } from 'react';
 import { TotalScoreContext } from '../app/page';
 import { VictoryPointCard } from './VictoryPointCard';
+import { GardenCard } from './GardenCard';
 
 const CARD_INFO = [
-  { cardName: "屋敷", scorePerCard: 1 },
-  { cardName: "広陵", scorePerCard: 3 },
-  { cardName: "属州", scorePerCard: 6 },
-  { cardName: "呪い", scorePerCard: -1 },
+  { cardName: "屋敷", pointsPerCard: 1 },
+  { cardName: "広陵", pointsPerCard: 3 },
+  { cardName: "属州", pointsPerCard: 6 },
+  { cardName: "呪い", pointsPerCard: -1 },
 ]
 
 export default function ScoreCalculator() {
@@ -25,9 +26,10 @@ export default function ScoreCalculator() {
             <VictoryPointCard
               key={item.cardName}
               cardName={item.cardName}
-              pointsPerCard={item.scorePerCard}
+              pointsPerCard={item.pointsPerCard}
             />
           ))}
+          <GardenCard key={"garden"} cardName='庭園' pointsPerCard={0} />
         </div>
         <div className="mt-4">
           <div className="text-lg font-bold">合計得点: {totalScore}</div>
