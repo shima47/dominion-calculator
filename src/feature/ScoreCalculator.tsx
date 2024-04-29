@@ -1,5 +1,5 @@
 'use client'
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { TotalScoreContext } from '../app/page';
 import { VictoryPointCard } from './VictoryPointCard';
 
@@ -17,15 +17,10 @@ export default function ScoreCalculator() {
   const { totalScore } = TotalScoreState
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24 w-9/10 mx-auto">
-      <div className="z-10 w-full max-w-5xl flex flex-col items-center justify-center font-mono text-sm">
-        <h2 className="text-lg font-bold">ドミニオン得点計算</h2>
-        <div className="flex flex-col space-y-2">
-          <div className="flex justify-between">
-            <span className="px-2.5">種類</span>
-            <span className="px-2.5">枚数</span>
-            <span className="px-2.5">得点</span>
-          </div>
+    <main className="flex min-h-screen flex-col p-8 w-9/10 mx-auto text-lg">
+      <div className="w-full max-w-5xl flex flex-col gap-2 justify-center font-mono">
+        <div className="font-bold">ドミニオン得点計算</div>
+        <div className="flex flex-col space-y-2 w-full">
           {CARD_INFO.map(item => (
             <VictoryPointCard
               key={item.cardName}
@@ -35,8 +30,7 @@ export default function ScoreCalculator() {
           ))}
         </div>
         <div className="mt-4">
-          <h3 className="text-lg font-bold">合計得点:</h3>
-          <p className="text-lg">{totalScore}</p>
+          <div className="text-lg font-bold">合計得点: {totalScore}</div>
         </div>
       </div>
     </main>

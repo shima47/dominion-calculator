@@ -31,18 +31,21 @@ export const VictoryPointCard = (props: VictoryPointCardProps) => {
   };
 
   return (
-    <div className="flex justify-between">
-      <span className="px-2.5">{props.cardName}</span>
-      <input
-        ref={inputRef}
-        className="border rounded p-1 text-lg w-20"
-        type="number"
-        value={cardCount}
-        min="0"
-        onChange={handleCardCountChange}
-        onFocus={handleFocus}
-      />
-      <span className="px-2.5">{cardScore}</span>
+    <div className="flex justify-between items-center">
+      <div className="flex items-center justify-center gap-2 w-full">{props.cardName}</div>
+      <div className="flex items-center justify-center gap-2 w-full">
+        <input
+          ref={inputRef}
+          className="border rounded p-1 w-20"
+          type="number"
+          value={cardCount}
+          min="0"
+          onChange={handleCardCountChange}
+          onFocus={handleFocus}
+        />
+        枚
+      </div>
+      <div className="flex items-center justify-center gap-2 w-full">{cardScore} 点</div>
     </div>
   );
 };
