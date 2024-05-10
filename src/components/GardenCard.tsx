@@ -1,5 +1,6 @@
-import { useContext, useState, useRef } from 'react';
+import { useContext, useState, } from 'react';
 import { TotalScoreContext } from '@/components/ContextProvider';
+import { StepperField } from '@aws-amplify/ui-react';
 
 type GardenCardProps = {
   cardName: string;
@@ -13,41 +14,23 @@ export const GardenCard = (props: GardenCardProps) => {
   const [gardenCardCount, setGardenCardCount] = useState(0);
   const [allCardCount, setAllCardCount] = useState(0);
   const [cardScore, setCardScore] = useState(0);
-  const inputGardenCardRef = useRef<HTMLInputElement>(null);
-  const inputAllCardRef = useRef<HTMLInputElement>(null);
 
-  const handleGardenCardFocus = () => {
-    const inputElement = inputGardenCardRef.current;
-    if (inputElement) {
-      inputElement.select();
-    }
-  };
-
-  const handleAllCardFocus = () => {
-    const inputElement = inputAllCardRef.current;
-    if (inputElement) {
-      inputElement.select();
-    }
-  };
-
-  const handleGardenCardCountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newCount = parseInt(event.target.value, 10) || 0;
-    setGardenCardCount(newCount);
+  const handleGardenCardCountChange = (newCount: number) => {
     const newCountObj = {
       gardenCard: newCount,
       allCardCount: allCardCount,
     }
     calcGardenScore(newCountObj)
+    setGardenCardCount(newCount);
   };
 
-  const handleAllCardCountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newCount = parseInt(event.target.value, 10) || 0;
-    setAllCardCount(newCount);
+  const handleAllCardCountChange = (newCount: number) => {
     const newCountObj = {
       gardenCard: gardenCardCount,
       allCardCount: newCount,
     }
     calcGardenScore(newCountObj)
+    setAllCardCount(newCount);
   };
 
   type newCountObjType = {
@@ -66,14 +49,14 @@ export const GardenCard = (props: GardenCardProps) => {
       <div className="flex justify-between items-center">
         <div className="flex items-center justify-center gap-2 w-full">{props.cardName}</div>
         <div className="flex items-center justify-center gap-2 w-full">
-          <input
-            ref={inputGardenCardRef}
-            className="border rounded p-1 w-20"
-            type="number"
+          <StepperField
+            width={"150px"}
             value={gardenCardCount}
-            min="0"
-            onChange={handleGardenCardCountChange}
-            onFocus={handleGardenCardFocus}
+            onStepChange={handleGardenCardCountChange}
+            label=""
+            defaultValue={0}
+            min={0}
+            labelHidden
           />
           枚
         </div>
@@ -82,14 +65,14 @@ export const GardenCard = (props: GardenCardProps) => {
       <div className="flex justify-between items-center">
         <div className="flex items-center justify-center gap-2 w-full">全体</div>
         <div className="flex items-center justify-center gap-2 w-full">
-          <input
-            ref={inputAllCardRef}
-            className="border rounded p-1 w-20"
-            type="number"
+          <StepperField
+            width={"150px"}
             value={allCardCount}
-            min="0"
-            onChange={handleAllCardCountChange}
-            onFocus={handleAllCardFocus}
+            onStepChange={handleAllCardCountChange}
+            label=""
+            defaultValue={0}
+            min={0}
+            labelHidden
           />
           枚
         </div>

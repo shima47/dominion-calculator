@@ -1,5 +1,7 @@
-import { useContext, useState, useRef } from 'react';
+import { useContext, useState, } from 'react';
 import { TotalScoreContext } from '@/components/ContextProvider';
+import { StepperField } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
 
 type VictoryPointCardProps = {
   cardName: string;
@@ -12,20 +14,11 @@ export const VictoryPointCard = (props: VictoryPointCardProps) => {
   const { setTotalScore } = TotalScoreState
   const [cardCount, setCardCount] = useState(0);
   const [cardScore, setCardScore] = useState(0);
-  const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleFocus = () => {
-    const inputElement = inputRef.current;
-    if (inputElement) {
-      inputElement.select();
-    }
-  };
-
-  const handleCardCountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCardCountChange = (newCount: number) => {
     const prevCardScore = cardScore
-    const newCount = parseInt(event.target.value, 10) || 0;
     const newCardScore = newCount * props.pointsPerCard
-    setCardCount(newCount);
+    setCardCount(newCount)
     setCardScore(newCardScore);
     setTotalScore(prev => prev - prevCardScore + newCardScore);
   };
@@ -34,14 +27,14 @@ export const VictoryPointCard = (props: VictoryPointCardProps) => {
     <div className="flex justify-between items-center">
       <div className="flex items-center justify-center gap-2 w-full">{props.cardName}</div>
       <div className="flex items-center justify-center gap-2 w-full">
-        <input
-          ref={inputRef}
-          className="border rounded p-1 w-20"
-          type="number"
+        <StepperField
+          width={"150px"}
           value={cardCount}
-          min="0"
-          onChange={handleCardCountChange}
-          onFocus={handleFocus}
+          onStepChange={handleCardCountChange}
+          label=""
+          defaultValue={0}
+          min={0}
+          labelHidden
         />
         枚
       </div>
