@@ -1,5 +1,5 @@
 'use client'
-import ScoreCalculator from '@/feature/ScoreCalculator';
+import ScoreCalculator from '@/components/ScoreCalculator';
 import { useState, createContext } from 'react';
 
 type TotalScoreContextType = {
