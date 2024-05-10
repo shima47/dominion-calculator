@@ -77,7 +77,7 @@ export const GardenCard = (props: GardenCardProps) => {
           />
           枚
         </div>
-        <div className="flex items-center justify-center gap-2 w-full"></div>
+        <div className="flex items-center justify-center gap-2 w-full">{cardScore} 点</div>
       </div>
       <div className="flex justify-between items-center">
         <div className="flex items-center justify-center gap-2 w-full">全体</div>
@@ -93,7 +93,7 @@ export const GardenCard = (props: GardenCardProps) => {
           />
           枚
         </div>
-        <div className="flex items-center justify-center gap-2 w-full">{cardScore} 点</div>
+        <div className="flex items-center justify-center gap-2 w-full"></div>
       </div>
     </div>
   );
