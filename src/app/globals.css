@@ -18,12 +18,9 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-image: url('../../public/dominion_2nd_ed_cover.png');
+  background-size: cover; /* 画像を画面にフィットさせる */
+  background-position: center; /* 画像を中央に配置 */
 }
 
 @layer utilities {

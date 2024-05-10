@@ -19,8 +19,8 @@ const ScoreCalculator = () => {
   const { totalScore } = TotalScoreState
 
   return (
-    <main className="flex min-h-screen flex-col p-8 w-9/10 text-lg">
-      <div className="w-full max-w-5xl flex flex-col gap-2 justify-center font-mono">
+    <main className="flex min-h-screen flex-col p-4 w-9/10 text-lg">
+      <div className="w-full p-4 max-w-5xl flex flex-col justify-center gap-2 bg-white rounded-2xl font-mono" style={{backgroundColor: "rgba(255,255,255,0.95)"}}>
         <div className="font-bold">ドミニオン得点計算</div>
         <div className="flex flex-col space-y-3 w-full">
           {CARD_INFO.map(item => (
