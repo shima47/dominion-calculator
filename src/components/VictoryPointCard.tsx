@@ -1,5 +1,5 @@
 import { useContext, useState, useRef } from 'react';
-import { TotalScoreContext } from '../app/page';
+import { TotalScoreContext } from '@/components/ContextProvider';
 
 type VictoryPointCardProps = {
   cardName: string;

@@ -1,6 +1,6 @@
 'use client'
 import { useContext } from 'react';
-import { TotalScoreContext } from '../app/page';
+import { TotalScoreContext } from '@/components/ContextProvider';
 import { VictoryPointCard } from './VictoryPointCard';
 import { GardenCard } from './GardenCard';
 
@@ -12,9 +12,9 @@ const CARD_INFO = [
   { cardName: "呪い", pointsPerCard: -1 },
 ]
 
-export default function ScoreCalculator() {
+const ScoreCalculator = () => {
   const TotalScoreState = useContext(TotalScoreContext)
-  if (!TotalScoreState) return
+  if (!TotalScoreState) return <></>
 
   const { totalScore } = TotalScoreState
 
@@ -41,3 +41,5 @@ export default function ScoreCalculator() {
     </main>
   );
 }
+
+export default ScoreCalculator

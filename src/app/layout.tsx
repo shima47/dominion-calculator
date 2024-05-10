@@ -9,14 +9,16 @@ export const metadata: Metadata = {
   description: "Dominion Calculator",
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
     <html lang="ja">
       <body className={inter.className}>{children}</body>
     </html>
   );
 }
+
+export default RootLayout
